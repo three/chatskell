@@ -1,5 +1,9 @@
 {-# LANGUAGE OverloadedStrings #-}
 
+module Chatskell (
+    runChatskell
+) where
+
 -- Warp and dependencies
 import Network.HTTP.Types
 import Network.Wai
@@ -111,7 +115,7 @@ app state req =
         -- 404 Not Found
         otherwise -> route404 req
 
-main :: IO ()
-main = do
+runChatskell :: IO ()
+runChatskell = do
     state <- initChatState
     runSettings serverSettings $ app state
